@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammad Hana Haikal | Potofolio</title>
+    <!-- CDN Styles & Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- CDN for Particle Library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+      :root {
+        --color-primary: #667eea;
+        --color-secondary: #764ba2;
+        --color-accent: #f093fb;
+        --color-bg: #0f0c29;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: linear-gradient(
+          to bottom,
+          var(--color-bg),
+          #302b63,
+          #24243e
+        );
+        color: #f3f4f6;
+        min-height: 100vh;
+        cursor: none; /* Hide default cursor for our custom one */
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* === GLASSMORPHISM === */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s ease;
+      }
+      .glass-card:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateY(-5px) scale(1.01);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+      }
+
+      /* === GRADIENT TEXT === */
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          var(--color-accent) 0%,
+          #f5576c 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+      }
+
+      /* === NAVIGATION === */
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background: linear-gradient(
+          90deg,
+          var(--color-accent) 0%,
+          #f5576c 100%
+        );
+        transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* === CUSTOM CURSOR === */
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--color-accent);
+        border-radius: 50%;
+      }
+      .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 2px solid rgba(240, 147, 251, 0.4);
+        border-radius: 50%;
+        transition: all 0.2s ease-out;
+      }
+      .cursor-dot,
+      .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        pointer-events: none;
+      }
+      .cursor-hover .cursor-outline {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(240, 147, 251, 0.1);
+        border: 2px solid var(--color-accent);
+      }
+
+      /* === HERO IMAGE STYLING & ANIMATION === */
+      .hero-img-container {
+        position: relative;
+        display: inline-block;
+      }
+      .hero-img-container::before {
+        content: "";
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        top: -25%;
+        left: -25%;
+        background: linear-gradient(
+          45deg,
+          var(--color-primary),
+          var(--color-accent),
+          var(--color-secondary),
+          var(--color-primary)
+        );
+        background-size: 400% 400%;
+        z-index: -1;
+        border-radius: 50%;
+        animation: gradientShift 8s ease infinite;
+        filter: blur(25px);
+        opacity: 0.7;
+      }
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .hero-img {
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        isolation: isolate;
+        transform: perspective(1000px) rotateX(5deg) rotateY(-10deg);
+        transition: transform 0.7s ease, box-shadow 0.7s ease;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+      .hero-img:hover {
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.05);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      }
+
+      /* === PROJECT CARD TILT EFFECT === */
+      .project-card {
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+      }
+      .project-card-inner {
+        transition: transform 0.5s ease;
+      }
+
+      /* === PARTICLE CONTAINER === */
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1; /* Place behind everything */
+      }
+
+      /* === SMOOTH SCROLL === */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .cta-button {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-secondary) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: 0.5s;
+      }
+      .cta-button:hover::before {
+        left: 100%;
+      }
+
+      /* === SKILL BAR ANIMATION === */
+      .skill-bar {
+        width: 0;
+        transition: width 2s ease-in-out;
+      }
+      .skill-bar.animate {
+        width: var(--skill-level);
+      }
+
+      /* === TIMELINE === */
+      .timeline-item {
+        position: relative;
+        padding-left: 3rem;
+        margin-bottom: 4rem;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          var(--color-primary),
+          var(--color-accent)
+        );
+      }
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: 0;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--color-accent);
+      }
+
+      /* === BLOG CARD === */
+      .blog-card {
+        transition: all 0.4s ease;
+      }
+      .blog-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
+          0 10px 10px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      /* === IMAGE MODAL STYLING === */
+      #imageModal {
+        transition: opacity 0.3s ease;
+      }
+      #imageModal:not(.hidden) {
+        display: flex !important;
+      }
+      #modalImage {
+        max-height: 80vh;
+        object-fit: contain;
+      }
+
+      /* === CONTAINER WIDTH ADJUSTMENT === */
+      .container {
+        max-width: 1200px;
+      }
+      @media (min-width: 1400px) {
+        .container {
+          max-width: 1320px;
+        }
+      }
+      @media (max-width: 1200px) {
+        .container {
+          max-width: 1140px;
+        }
+      }
+      @media (max-width: 992px) {
+        .container {
+          max-width: 960px;
+        }
+      }
+      @media (max-width: 768px) {
+        .container {
+          max-width: 720px;
+        }
+      }
+      @media (max-width: 576px) {
+        .container {
+          max-width: 540px;
+        }
+      }
+
+      /* === SLIM LAYOUT ADJUSTMENTS === */
+      .slim-container {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (max-width: 1200px) {
+        .slim-container {
+          max-width: 900px;
+        }
+      }
+      @media (max-width: 992px) {
+        .slim-container {
+          max-width: 800px;
+        }
+      }
+
+      /* === MOBILE-SPECIFIC STYLES === */
+      @media (max-width: 768px) {
+        /* Hide custom cursor on mobile */
+        .cursor-dot, .cursor-outline {
+          display: none;
+        }
+        body {
+          cursor: auto;
+        }
+
+        /* Adjust hero section */
+        #home {
+          padding-top: 100px;
+          padding-bottom: 50px;
+        }
+        .hero-img {
+          width: 200px;
+          height: 200px;
+          margin-bottom: 30px;
+        }
+
+        /* Navigation adjustments */
+        nav {
+          padding: 0.5rem 1rem;
+        }
+        #mobile-menu {
+          position: absolute;
+          width: calc(100% - 2rem);
+          left: 1rem;
+          top: 100%;
+          z-index: 1000;
+        }
+
+        /* Text sizing for mobile */
+        h1 {
+          font-size: 2rem;
+        }
+        h2 {
+          font-size: 1.75rem;
+        }
+        .text-4xl {
+          font-size: 1.5rem;
+        }
+        .text-5xl {
+          font-size: 2rem;
+        }
+
+        /* Button spacing */
+        .cta-button, .glass-card {
+          margin-bottom: 1rem;
+        }
+
+        /* Timeline adjustments */
+        .timeline-item {
+          padding-left: 2rem;
+          margin-bottom: 2.5rem;
+        }
+        .timeline-item::after {
+          left: -6px;
+          width: 14px;
+          height: 14px;
+        }
+
+        /* Modal adjustments */
+        #imageModal .max-w-4xl {
+          width: 95%;
+          margin: 0 auto;
+        }
+        #prevImage, #nextImage {
+          padding: 0.5rem;
+          font-size: 0.875rem;
+        }
+
+        /* Form adjustments */
+        #contact form {
+          padding: 1.5rem;
+        }
+
+        /* Skill grid adjustments */
+        .grid-cols-2 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .grid-cols-3 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .grid-cols-6 {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* Further adjustments for very small screens */
+        .hero-img {
+          width: 180px;
+          height: 180px;
+        }
+        
+        .flex-row {
+          flex-direction: column;
+        }
+        
+        .flex-row > * {
+          margin-bottom: 1rem;
+        }
+        
+        .grid-cols-2,
+        .grid-cols-3,
+        .grid-cols-6 {
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        
+        .slim-container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        /* Project card adjustments */
+        .project-card {
+          margin-bottom: 1.5rem;
+        }
+        
+        /* Timeline adjustments */
+        .timeline-item {
+          padding-left: 1.5rem;
+        }
+      }
+
+      /* Prevent horizontal scrolling */
+      body, html {
+        overflow-x: hidden;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation Bar -->
+    <nav
+      class="fixed w-full z-50 backdrop-blur-md bg-opacity-30 border-b border-gray-800"
+    >
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <a href="#" class="text-xl md:text-2xl font-bold gradient-text" data-cursor-hover
+          >My<span class="text-white">Portofolio</span></a
+        >
+        <div class="hidden md:flex space-x-6 md:space-x-10">
+          <a
+            href="#home"
+            class="nav-link text-white hover:text-purple-300 transition"
+            data-cursor-hover
+            >Home</a
+          >
+          <a
+            href="#projects"
+            class="nav-link text-white hover:text-purple-300 transition"
+            data-cursor-hover
+            >Projects</a
+          >
+          <a
+            href="#skills"
+            class="nav-link text-white hover:text-purple-300 transition"
+            data-cursor-hover
+            >Skills</a
+          >
+          <a
+            href="#experience"
+            class="nav-link text-white hover:text-purple-300 transition"
+            data-cursor-hover
+            >Experience</a
+          >
+          <a
+            href="#work-gallery"
+            class="nav-link text-white hover:text-purple-300 transition"
+            data-cursor-hover
+            >Gallery</a
+          >
+          <a
+            href="#education"
+            class="nav-link text-white hover:text-purple-300 transition"
+            data-cursor-hover
+            >Education</a
+          >
+          <a
+            href="#achievements"
+            class="nav-link text-white hover:text-purple-300 transition"
+            data-cursor-hover
+            >Sertifikat</a
+          >
+          <a
+            href="#about"
+            class="nav-link text-white hover:text-purple-300 transition"
+            data-cursor-hover
+            >About</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-white hover:text-purple-300 transition"
+            data-cursor-hover
+            >Contact</a
+          >
+        </div>
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button
+            id="menu-btn"
+            class="text-white focus:outline-none"
+            data-cursor-hover
+          >
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden glass-card m-4 p-4">
+        <a href="#home" class="block py-2 text-white" data-cursor-hover>Home</a>
+        <a href="#projects" class="block py-2 text-white" data-cursor-hover
+          >Projects</a
+        >
+        <a href="#skills" class="block py-2 text-white" data-cursor-hover
+          >Skills</a
+        >
+        <a href="#experience" class="block py-2 text-white" data-cursor-hover
+          >Experience</a
+        >
+        <a href="#work-gallery" class="block py-2 text-white" data-cursor-hover
+          >Gallery</a
+        >
+        <a href="#education" class="block py-2 text-white" data-cursor-hover
+          >Education</a
+        >
+        <a href="#achievements" class="block py-2 text-white" data-cursor-hover
+          >Sertifikat</a
+        >
+        <a href="#about" class="block py-2 text-white" data-cursor-hover
+          >About</a
+        >
+        <a href="#contact" class="block py-2 text-white" data-cursor-hover
+          >Contact</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16 md:pt-20 pb-10 md:pb-0">
+      <div
+        class="slim-container mx-auto px-4 md:px-6 flex flex-col-reverse md:flex-row items-center justify-between"
+      >
+        <div
+          class="md:w-1/2 mt-8 md:mt-0 text-center md:text-left"
+          data-aos="fade-right"
+          data-aos-delay="200"
+        >
+          <h1 class="text-3xl md:text-5xl font-bold leading-tight">
+            Halo, Saya
+            <span class="gradient-text" data-cursor-hover>
+              Muhammad Hana Haikal
+            </span>
+          </h1>
+          <p class="mt-4 md:mt-6 text-gray-400 text-sm md:text-base">
+            Lulusan D3 Teknik Infromatika Memiliki kemampuan adaptasi yang baik
+            dan semangat kerja yang tinggi!
+          </p>
+          <div class="mt-6 md:mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+            <a
+              href="#projects"
+              class="px-4 py-2 md:px-6 md:py-3 cta-button text-white rounded-lg font-semibold shadow-lg hover:shadow-purple-500/30 transition text-sm md:text-base"
+              data-cursor-hover
+              >View My Work</a
+            >
+            <a
+              href="#contact"
+              class="px-4 py-2 md:px-6 md:py-3 glass-card text-white border border-purple-500 rounded-lg font-semibold hover:bg-purple-500 transition text-sm md:text-base"
+              data-cursor-hover
+              >Contact Me</a
+            >
+          </div>
+          <div class="mt-6 md:mt-8 flex space-x-4 justify-center md:justify-start">
+            <a
+              href="https://github.com/kal-Usr"
+              class="text-gray-400 hover:text-purple-400 transition"
+              data-cursor-hover
+              ><i class="fab fa-github text-xl md:text-2xl"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/muhammad-hana-haikal-68a932254/"
+              class="text-gray-400 hover:text-blue-400 transition"
+              data-cursor-hover
+              ><i class="fab fa-linkedin text-xl md:text-2xl"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/kalrvns/"
+              class="text-gray-400 hover:text-pink-400 transition"
+              data-cursor-hover
+              ><i class="fab fa-instagram text-xl md:text-2xl"></i
+            ></a>
+          </div>
+        </div>
+        <div
+          class="md:w-1/2 flex justify-center"
+          data-aos="fade-left"
+          data-aos-delay="400"
+        >
+          <div class="hero-img-container">
+            <div class="hero-img w-48 h-48 md:w-80 md:h-80">
+              <!-- Placeholder for your photo. Replace with <img> tag -->
+              <img
+                src="img/Main Profile/profile.jpeg"
+                alt="Foto Saya"
+                class="w-full h-full object-cover rounded-full shadow-lg"
+              />
+              <div
+                class="w-full h-full flex items-center justify-center text-white bg-gray-800 rounded-full"
+              >
+                <i class="fas fa-user-circle text-6xl md:text-8xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 md:py-20">
+      <div class="slim-container mx-auto px-4 md:px-6">
+        <h2
+          class="text-2xl md:text-4xl font-bold text-center mb-2"
+          data-aos="fade-up"
+        >
+          Featured <span class="gradient-text">Projects</span>
+        </h2>
+        <p
+          class="text-gray-400 text-center mb-8 md:mb-12 text-sm md:text-base"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Check out some of my latest work
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <!-- Project 1 -->
+          <div
+            class="project-card glass-card p-4 md:p-6 rounded-xl group"
+            data-aos="flip-left"
+            data-aos-delay="200"
+            data-tilt
+            data-tilt-max="5"
+            data-tilt-speed="400"
+            data-tilt-perspective="1000"
+          >
+            <div class="overflow-hidden rounded-lg mb-4">
+              <img
+                src="img/Projects/e-commerce main page.png"
+                alt="Project 1"
+                class="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition duration-700"
+              />
+            </div>
+            <h3 class="text-lg md:text-xl font-semibold mb-2">E-Commerce Website</h3>
+            <p class="text-gray-400 mb-4 text-sm md:text-base">
+              Sistem Informasi Toko online yang dibangun dengan Ci3, Mysql, Css3 dan Bootstrap5, menghadirkan pengalaman berbelanja yang lancar.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span
+                class="px-2 py-1 bg-purple-900/50 text-purple-200 rounded-full text-xs md:text-sm"
+                >CI3</span
+              >
+              <span
+                class="px-2 py-1 bg-purple-900/50 text-purple-200 rounded-full text-xs md:text-sm"
+                >Mysql</span
+              >
+              <span
+                class="px-2 py-1 bg-purple-900/50 text-purple-200 rounded-full text-xs md:text-sm"
+                >Css3</span
+              >
+               <span
+                class="px-2 py-1 bg-purple-900/50 text-purple-200 rounded-full text-xs md:text-sm"
+                >Bootstrap5</span
+              >
+            </div>
+            <a
+              href="https://tulusmakmur.my.id/"
+              class="text-pink-400 hover:text-pink-300 font-medium flex items-center text-sm md:text-base"
+              data-cursor-hover
+              >Live Demo <i class="fas fa-external-link-alt ml-2 text-xs md:text-sm"></i
+            ></a>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="project-card glass-card p-4 md:p-6 rounded-xl group"
+            data-aos="flip-left"
+            data-aos-delay="300"
+            data-tilt
+            data-tilt-max="5"
+            data-tilt-speed="400"
+            data-tilt-perspective="1000"
+          >
+            <div class="overflow-hidden rounded-lg mb-4">
+              <img
+                src="https://via.placeholder.com/600x400/f093fb/ffffff?text=Cool+Project+2"
+                alt="Project 2"
+                class="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition duration-700"
+              />
+            </div>
+            <h3 class="text-lg md:text-xl font-semibold mb-2">Task Management App</h3>
+            <p class="text-gray-400 mb-4 text-sm md:text-base">
+              A productivity app to help users organize their tasks and boost
+              efficiency with a clean UI.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span
+                class="px-2 py-1 bg-purple-900/50 text-purple-200 rounded-full text-xs md:text-sm"
+                >Vue.js</span
+              >
+              <span
+                class="px-2 py-1 bg-purple-900/50 text-purple-200 rounded-full text-xs md:text-sm"
+                >Firebase</span
+              >
+              <span
+                class="px-2 py-1 bg-purple-900/50 text-purple-200 rounded-full text-xs md:text-sm"
+                >CSS3</span
+              >
+            </div>
+            <a
+              href="#"
+              class="text-pink-400 hover:text-pink-300 font-medium flex items-center text-sm md:text-base"
+              data-cursor-hover
+              >Live Demo <i class="fas fa-external-link-alt ml-2 text-xs md:text-sm"></i
+            ></a>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="project-card glass-card p-4 md:p-6 rounded-xl group"
+            data-aos="flip-left"
+            data-aos-delay="400"
+            data-tilt
+            data-tilt-max="5"
+            data-tilt-speed="400"
+            data-tilt-perspective="1000"
+          >
+            <div class="overflow-hidden rounded-lg mb-4">
+              <img
+                src="https://via.placeholder.com/600x400/764ba2/ffffff?text=Cool+Project+3"
+                alt="Project 3"
+                class="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition duration-700"
+              />
+            </div>
+            <h3 class="text-lg md:text-xl font-semibold mb-2">Weather Dashboard</h3>
+            <p class="text-gray-400 mb-4 text-sm md:text-base">
+              A real-time weather application with forecasts, maps, and
+              interactive charts.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span
+                class="px-2 py-1 bg-purple-900/50 text-purple-200 rounded-full text-xs md:text-sm"
+                >JavaScript</span
+              >
+              <span
+                class="px-2 py-1 bg-purple-900/50 text-purple-200 rounded-full text-xs md:text-sm"
+                >API</span
+              >
+              <span
+                class="px-2 py-1 bg-purple-900/50 text-purple-200 rounded-full text-xs md:text-sm"
+                >Chart.js</span
+              >
+            </div>
+            <a
+              href="#"
+              class="text-pink-400 hover:text-pink-300 font-medium flex items-center text-sm md:text-base"
+              data-cursor-hover
+              >Live Demo <i class="fas fa-external-link-alt ml-2 text-xs md:text-sm"></i
+            ></a>
+          </div>
+        </div>
+        <div class="text-center mt-8 md:mt-12">
+          <a
+            href="#"
+            class="inline-flex items-center glass-card px-4 py-2 md:px-5 md:py-3 text-white rounded-lg font-semibold group text-sm md:text-base"
+            data-cursor-hover
+          >
+            View More on GitHub
+            <i
+              class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform text-xs md:text-sm"
+            ></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 md:py-20 bg-black bg-opacity-30">
+      <div class="slim-container mx-auto px-4 md:px-6">
+        <h2
+          class="text-2xl md:text-4xl font-bold text-center mb-2"
+          data-aos="fade-up"
+        >
+          My <span class="gradient-text">Skills</span>
+        </h2>
+        <p
+          class="text-gray-400 text-center mb-8 md:mb-12 text-sm md:text-base"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          The tools and technologies I use to bring ideas to life
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+          <div
+            class="flex flex-col items-center glass-card p-4 md:p-6 rounded-xl"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <i class="fab fa-html5 text-4xl md:text-5xl text-orange-500 mb-2 md:mb-4"></i>
+            <span class="font-semibold text-sm md:text-base">HTML5</span>
+          </div>
+          <div
+            class="flex flex-col items-center glass-card p-4 md:p-6 rounded-xl"
+            data-aos="zoom-in"
+            data-aos-delay="250"
+          >
+            <i class="fab fa-css3-alt text-4xl md:text-5xl text-blue-500 mb-2 md:mb-4"></i>
+            <span class="font-semibold text-sm md:text-base">CSS3</span>
+          </div>
+          <div
+            class="flex flex-col items-center glass-card p-4 md:p-6 rounded-xl"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+          >
+            <i class="fab fa-js-square text-4xl md:text-5xl text-yellow-500 mb-2 md:mb-4"></i>
+            <span class="font-semibold text-sm md:text-base">JavaScript</span>
+          </div>
+          <div
+            class="flex flex-col items-center glass-card p-4 md:p-6 rounded-xl"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+          >
+            <i class="fab fa-bootstrap text-4xl md:text-5xl text-green-500 mb-2 md:mb-4"></i>
+            <span class="font-semibold text-sm md:text-base">Bootstrap</span>
+          </div>
+          <div
+            class="flex flex-col items-center glass-card p-4 md:p-6 rounded-xl"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+          >
+            <i class="fab fa-github text-4xl md:text-5xl text-green-500 mb-2 md:mb-4"></i>
+            <span class="font-semibold text-sm md:text-base">Github</span>
+          </div>
+          <div
+            class="flex flex-col items-center glass-card p-4 md:p-6 rounded-xl"
+            data-aos="zoom-in"
+            data-aos-delay="350"
+          >
+            <i class="fab fa-git text-4xl md:text-5xl text-cyan-500 mb-2 md:mb-4"></i>
+            <span class="font-semibold text-sm md:text-base">Git</span>
+          </div>
+        </div>
+
+        <!-- Skill Bars -->
+        <div class="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div
+            class="glass-card p-4 md:p-6 rounded-xl"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold text-sm md:text-base">Web Development</span>
+              <span class="text-sm md:text-base">90%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+              <div
+                class="skill-bar h-2.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+                style="--skill-level: 90%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="glass-card p-4 md:p-6 rounded-xl"
+            data-aos="fade-left"
+            data-aos-delay="300"
+          >
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold text-sm md:text-base">UI/UX Design</span>
+              <span class="text-sm md:text-base">85%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+              <div
+                class="skill-bar h-2.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+                style="--skill-level: 85%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="glass-card p-4 md:p-6 rounded-xl"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold text-sm md:text-base">Database</span>
+              <span class="text-sm md:text-base">88%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+              <div
+                class="skill-bar h-2.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+                style="--skill-level: 88%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="glass-card p-4 md:p-6 rounded-xl"
+            data-aos="fade-left"
+            data-aos-delay="500"
+          >
+            <div class="flex justify-between mb-2">
+              <span class="font-semibold text-sm md:text-base">Problem Solving</span>
+              <span class="text-sm md:text-base">92%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2.5">
+              <div
+                class="skill-bar h-2.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+                style="--skill-level: 92%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 md:py-20">
+      <div class="slim-container mx-auto px-4 md:px-6">
+        <h2
+          class="text-2xl md:text-4xl font-bold text-center mb-2"
+          data-aos="fade-up"
+        >
+          Work <span class="gradient-text">Experience</span>
+        </h2>
+        <p
+          class="text-gray-400 text-center mb-8 md:mb-12 text-sm md:text-base"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          My professional journey so far
+        </p>
+
+        <div class="max-w-3xl mx-auto">
+          <!-- Experience 1 -->
+          <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+            <h3 class="text-lg md:text-xl font-semibold">Magang Diskominfo Kota Tegal</h3>
+            <p class="text-purple-400 text-sm md:text-base">
+              Bidang Infrastruktur & Persandian. • 2024 - 2024
+            </p>
+            <ul class="mt-2 text-gray-400 list-disc list-outside pl-5 text-sm md:text-base">
+              <li>Melakukan monitoring dan rekap traffic network</li>
+              <li>Melakukan testing jaringan di MPP Kota Tegal dan kelurahan</li>
+              <li>Melakukan instalasi software mesin antrian di MPP Kota Tegal</li>
+              <li>Mengoperasikan perangkat lunak monitoring network, Google Sheet, dan Google Docs</li>
+            </ul>
+          </div>
+
+          <!-- Experience 2 -->
+          <div class="timeline-item" data-aos="fade-left" data-aos-delay="300">
+            <h3 class="text-lg md:text-xl font-semibold">Magang – Developer Python</h3>
+            <p class="text-purple-400 text-sm md:text-base">
+              Perorangan / Freelance • 2023
+            </p>
+                      <ul class="mt-2 text-gray-400 list-disc list-outside pl-5 text-sm md:text-base">
+              <li>Mengembangkan aplikasi berbasis Python dengan integrasi FFmpeg untuk pemrosesan video dan audio.</li>
+              <li>Membuat script otomatisasi untuk konversi, kompresi, dan manipulasi file multimedia.</li>
+              <li>Berkolaborasi langsung dengan mentor untuk memahami kebutuhan sistem dan mengimplementasikan solusi yang efisien.</li>
+            </ul>
+
+          </div>
+
+          <!-- Experience 3 -->
+          <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+            <h3 class="text-lg md:text-xl font-semibold">PERTAMINA PT. PATRA LOGISTIK</h3>
+            <p class="text-purple-400 text-sm md:text-base">Operator Gps. • 2025 - 2025</p>
+                          <ul class="mt-2 text-gray-400 list-disc list-outside pl-5 text-sm md:text-base">
+                  <li>Melakukan monitoring trip pengiriman BBM di truk Pertamina</li>
+                  <li>Memberikan peringatan kepada supir jika melanggar aturan yang ada</li>
+                  <li>Memberikan himbauan untuk tetap mengutamakan keamanan berkendara</li>
+                  <li>Membuat laporan dan merekap administratif</li>
+                </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dokumentasi Pengalaman Kerja Section -->
+    <section id="work-gallery" class="py-16 md:py-20 bg-black bg-opacity-20">
+      <div class="slim-container mx-auto px-4 md:px-6">
+        <h2
+          class="text-2xl md:text-4xl font-bold text-center mb-2"
+          data-aos="fade-up"
+        >
+          Work <span class="gradient-text">Documentation</span>
+        </h2>
+        <p
+          class="text-gray-400 text-center mb-8 md:mb-12 text-sm md:text-base"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Photo gallery from my professional experiences
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <!-- Photo 1 -->
+          <div
+            class="glass-card rounded-xl overflow-hidden group"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://via.placeholder.com/600x400/667eea/ffffff?text=Work+Photo+1"
+                alt="Work Documentation 1"
+                class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <button
+                  class="text-white bg-purple-600 bg-opacity-70 rounded-full p-2 md:p-3 view-image"
+                  data-image="https://via.placeholder.com/600x400/667eea/ffffff?text=Work+Photo+1"
+                >
+                  <i class="fas fa-expand text-sm md:text-base"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-3 md:p-4">
+              <h3 class="text-base md:text-lg font-semibold">Team Collaboration</h3>
+              <p class="text-gray-400 text-xs md:text-sm">TechGenius Inc. • 2022</p>
+            </div>
+          </div>
+
+          <!-- Photo 2 -->
+          <div
+            class="glass-card rounded-xl overflow-hidden group"
+            data-aos="zoom-in"
+            data-aos-delay="250"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://via.placeholder.com/600x400/f093fb/ffffff?text=Work+Photo+2"
+                alt="Work Documentation 2"
+                class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <button
+                  class="text-white bg-purple-600 bg-opacity-70 rounded-full p-2 md:p-3 view-image"
+                  data-image="https://via.placeholder.com/600x400/f093fb/ffffff?text=Work+Photo+2"
+                >
+                  <i class="fas fa-expand text-sm md:text-base"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-3 md:p-4">
+              <h3 class="text-base md:text-lg font-semibold">Project Launch</h3>
+              <p class="text-gray-400 text-xs md:text-sm">WebSolutions Ltd. • 2021</p>
+            </div>
+          </div>
+
+          <!-- Photo 3 -->
+          <div
+            class="glass-card rounded-xl overflow-hidden group"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://via.placeholder.com/600x400/764ba2/ffffff?text=Work+Photo+3"
+                alt="Work Documentation 3"
+                class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <button
+                  class="text-white bg-purple-600 bg-opacity-70 rounded-full p-2 md:p-3 view-image"
+                  data-image="https://via.placeholder.com/600x400/764ba2/ffffff?text=Work+Photo+3"
+                >
+                  <i class="fas fa-expand text-sm md:text-base"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-3 md:p-4">
+              <h3 class="text-base md:text-lg font-semibold">Client Meeting</h3>
+              <p class="text-gray-400 text-xs md:text-sm">Digital Creatives • 2019</p>
+            </div>
+          </div>
+
+          <!-- Photo 4 -->
+          <div
+            class="glass-card rounded-xl overflow-hidden group"
+            data-aos="zoom-in"
+            data-aos-delay="350"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://via.placeholder.com/600x400/667eea/ffffff?text=Work+Photo+4"
+                alt="Work Documentation 4"
+                class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <button
+                  class="text-white bg-purple-600 bg-opacity-70 rounded-full p-2 md:p-3 view-image"
+                  data-image="https://via.placeholder.com/600x400/667eea/ffffff?text=Work+Photo+4"
+                >
+                  <i class="fas fa-expand text-sm md:text-base"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-3 md:p-4">
+              <h3 class="text-base md:text-lg font-semibold">Conference Talk</h3>
+              <p class="text-gray-400 text-xs md:text-sm">Tech Summit • 2020</p>
+            </div>
+          </div>
+
+          <!-- Photo 5 -->
+          <div
+            class="glass-card rounded-xl overflow-hidden group"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://via.placeholder.com/600x400/f093fb/ffffff?text=Work+Photo+5"
+                alt="Work Documentation 5"
+                class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <button
+                  class="text-white bg-purple-600 bg-opacity-70 rounded-full p-2 md:p-3 view-image"
+                  data-image="https://via.placeholder.com/600x400/f093fb/ffffff?text=Work+Photo+5"
+                >
+                  <i class="fas fa-expand text-sm md:text-base"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-3 md:p-4">
+              <h3 class="text-base md:text-lg font-semibold">Workshop</h3>
+              <p class="text-gray-400 text-xs md:text-sm">Developer Conference • 2022</p>
+            </div>
+          </div>
+
+          <!-- Photo 6 -->
+          <div
+            class="glass-card rounded-xl overflow-hidden group"
+            data-aos="zoom-in"
+            data-aos-delay="450"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://via.placeholder.com/600x400/764ba2/ffffff?text=Work+Photo+6"
+                alt="Work Documentation 6"
+                class="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <button
+                  class="text-white bg-purple-600 bg-opacity-70 rounded-full p-2 md:p-3 view-image"
+                  data-image="https://via.placeholder.com/600x400/764ba2/ffffff?text=Work+Photo+6"
+                >
+                  <i class="fas fa-expand text-sm md:text-base"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-3 md:p-4">
+              <h3 class="text-base md:text-lg font-semibold">Team Building</h3>
+              <p class="text-gray-400 text-xs md:text-sm">Company Retreat • 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 md:py-20 bg-black bg-opacity-30">
+      <div class="slim-container mx-auto px-4 md:px-6">
+        <h2
+          class="text-2xl md:text-4xl font-bold text-center mb-2"
+          data-aos="fade-up"
+        >
+          My <span class="gradient-text">Education</span>
+        </h2>
+        <p
+          class="text-gray-400 text-center mb-8 md:mb-12 text-sm md:text-base"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          My academic background
+        </p>
+
+        <div class="max-w-3xl mx-auto">
+          <!-- Education 1 -->
+          <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+            <h3 class="text-lg md:text-xl font-semibold">
+              Teknik Kendarran Ringan Otomotif (Tkro)
+            </h3>
+            <p class="text-purple-400 text-sm md:text-base">
+              Smk Muhammadiyah 1 Kota Tegal • 2019 - 2021
+            </p>
+            <p class="mt-2 text-gray-400 text-sm md:text-base">
+              Fokus pada Perawatan & Diagnosa Kendaraan Ringan.
+            </p>
+          </div>
+
+          <!-- Education 2 -->
+          <div class="timeline-item" data-aos="fade-left" data-aos-delay="300">
+            <h3 class="text-lg md:text-xl font-semibold">D3 Teknik Informatika</h3>
+            <p class="text-purple-400 text-sm md:text-base">Politeknik Purbaya • 2021 - 2024</p>
+            <p class="mt-2 text-gray-400 text-sm md:text-base">
+              Mempelajari dasar-dasar pengembangan perangkat lunak, algoritma,
+              dan struktur data.
+            </p>
+          </div>
+
+          <!-- Education 3 -->
+          <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
+            <h3 class="text-lg md:text-xl font-semibold">Web Development Bootcamp</h3>
+            <p class="text-purple-400 text-sm md:text-base">Code Politan • 2023</p>
+            <p class="mt-2 text-gray-400 text-sm md:text-base">
+              Program intensif dengan fokus pada pengembangan web full-stack.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements & Certificates Section -->
+    <section id="achievements" class="py-16 md:py-20">
+      <div class="slim-container mx-auto px-4 md:px-6">
+        <h2
+          class="text-2xl md:text-4xl font-bold text-center mb-2"
+          data-aos="fade-up"
+        >
+          My <span class="gradient-text">Achievements</span> & Certificates
+        </h2>
+        <p
+          class="text-gray-400 text-center mb-8 md:mb-12 text-sm md:text-base"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Recognition of my skills and accomplishments
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <!-- Certificate 1 -->
+          <div
+            class="certificate-card glass-card p-4 md:p-6 rounded-xl group"
+            data-aos="flip-left"
+            data-aos-delay="200"
+          >
+            <div class="overflow-hidden rounded-lg mb-4 relative">
+              <img
+                src="https://via.placeholder.com/600x400/667eea/ffffff?text=Frontend+Cert"
+                alt="Frontend Developer Certificate"
+                class="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute top-2 right-2 bg-purple-600 text-white text-xs px-2 py-1 rounded-full"
+              >
+                <i class="fas fa-award mr-1"></i> Certificate
+              </div>
+            </div>
+            <span class="text-sm text-purple-400">Issued: April 15, 2023</span>
+            <h3 class="text-lg md:text-xl font-semibold my-2">
+              Advanced Frontend Development
+            </h3>
+            <p class="text-gray-400 mb-4 text-sm md:text-base">
+              Certified by Google Developer Experts. Mastering React, Vue.js and
+              modern web development practices.
+            </p>
+            <div class="flex justify-between items-center">
+              <a
+                href="#"
+                class="text-pink-400 hover:text-pink-300 font-medium flex items-center text-sm md:text-base"
+                data-cursor-hover
+                >View Certificate <i class="fas fa-external-link-alt ml-2 text-xs md:text-sm"></i
+              ></a>
+              <span
+                class="bg-purple-900/30 text-purple-300 text-xs px-2 py-1 rounded-full"
+                >Google</span
+              >
+            </div>
+          </div>
+
+          <!-- Certificate 2 -->
+          <div
+            class="certificate-card glass-card p-4 md:p-6 rounded-xl group"
+            data-aos="flip-left"
+            data-aos-delay="300"
+          >
+            <div class="overflow-hidden rounded-lg mb-4 relative">
+              <img
+                src="https://via.placeholder.com/600x400/f093fb/ffffff?text=UI%2FUX+Cert"
+                alt="UI/UX Design Certificate"
+                class="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute top-2 right-2 bg-pink-600 text-white text-xs px-2 py-1 rounded-full"
+              >
+                <i class="fas fa-medal mr-1"></i> Award
+              </div>
+            </div>
+            <span class="text-sm text-purple-400">Issued: March 28, 2023</span>
+            <h3 class="text-lg md:text-xl font-semibold my-2">UI/UX Design Excellence</h3>
+            <p class="text-gray-400 mb-4 text-sm md:text-base">
+              Awarded for outstanding user interface design and exceptional user
+              experience implementation.
+            </p>
+            <div class="flex justify-between items-center">
+              <a
+                href="#"
+                class="text-pink-400 hover:text-pink-300 font-medium flex items-center text-sm md:text-base"
+                data-cursor-hover
+                >View Certificate <i class="fas fa-external-link-alt ml-2 text-xs md:text-sm"></i
+              ></a>
+              <span
+                class="bg-pink-900/30 text-pink-300 text-xs px-2 py-1 rounded-full"
+                >Adobe</span
+              >
+            </div>
+          </div>
+
+          <!-- Certificate 3 -->
+          <div
+            class="certificate-card glass-card p-4 md:p-6 rounded-xl group"
+            data-aos="flip-left"
+            data-aos-delay="400"
+          >
+            <div class="overflow-hidden rounded-lg mb-4 relative">
+              <img
+                src="https://via.placeholder.com/600x400/764ba2/ffffff?text=JavaScript+Expert"
+                alt="JavaScript Expert Certificate"
+                class="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full"
+              >
+                <i class="fas fa-trophy mr-1"></i> Achievement
+              </div>
+            </div>
+            <span class="text-sm text-purple-400"
+              >Issued: February 10, 2023</span
+            >
+            <h3 class="text-lg md:text-xl font-semibold my-2">
+              JavaScript Mastery Certification
+            </h3>
+            <p class="text-gray-400 mb-4 text-sm md:text-base">
+              Recognized as JavaScript expert with advanced knowledge of ES6+,
+              frameworks, and performance optimization.
+            </p>
+            <div class="flex justify-between items-center">
+              <a
+                href="#"
+                class="text-pink-400 hover:text-pink-300 font-medium flex items-center text-sm md:text-base"
+                data-cursor-hover
+                >View Certificate <i class="fas fa-external-link-alt ml-2 text-xs md:text-sm"></i
+              ></a>
+              <span
+                class="bg-blue-900/30 text-blue-300 text-xs px-2 py-1 rounded-full"
+                >MDN</span
+              >
+            </div>
+          </div>
+
+          <!-- Certificate 4 -->
+          <div
+            class="certificate-card glass-card p-4 md:p-6 rounded-xl group"
+            data-aos="flip-left"
+            data-aos-delay="200"
+          >
+            <div class="overflow-hidden rounded-lg mb-4 relative">
+              <img
+                src="https://via.placeholder.com/600x400/667eea/ffffff?text=React+Pro"
+                alt="React Professional Certificate"
+                class="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute top-2 right-2 bg-cyan-600 text-white text-xs px-2 py-1 rounded-full"
+              >
+                <i class="fas fa-award mr-1"></i> Professional
+              </div>
+            </div>
+            <span class="text-sm text-purple-400">Issued: January 5, 2023</span>
+            <h3 class="text-lg md:text-xl font-semibold my-2">
+              React Professional Developer
+            </h3>
+            <p class="text-gray-400 mb-4 text-sm md:text-base">
+              Professional certification in React development, state management,
+              and advanced component patterns.
+            </p>
+            <div class="flex justify-between items-center">
+              <a
+                href="#"
+                class="text-pink-400 hover:text-pink-300 font-medium flex items-center text-sm md:text-base"
+                data-cursor-hover
+                >View Certificate <i class="fas fa-external-link-alt ml-2 text-xs md:text-sm"></i
+              ></a>
+              <span
+                class="bg-cyan-900/30 text-cyan-300 text-xs px-2 py-1 rounded-full"
+                >Meta</span
+              >
+            </div>
+          </div>
+
+          <!-- Certificate 5 -->
+          <div
+            class="certificate-card glass-card p-4 md:p-6 rounded-xl group"
+            data-aos="flip-left"
+            data-aos-delay="300"
+          >
+            <div class="overflow-hidden rounded-lg mb-4 relative">
+              <img
+                src="https://via.placeholder.com/600x400/f093fb/ffffff?text=Cloud+Architect"
+                alt="Cloud Architect Certificate"
+                class="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full"
+              >
+                <i class="fas fa-certificate mr-1"></i> Specialist
+              </div>
+            </div>
+            <span class="text-sm text-purple-400"
+              >Issued: December 15, 2022</span
+            >
+            <h3 class="text-lg md:text-xl font-semibold my-2">
+              Cloud Solutions Architect
+            </h3>
+            <p class="text-gray-400 mb-4 text-sm md:text-base">
+              Certified cloud architect with expertise in AWS, Azure, and Google
+              Cloud deployment strategies.
+            </p>
+            <div class="flex justify-between items-center">
+              <a
+                href="#"
+                class="text-pink-400 hover:text-pink-300 font-medium flex items-center text-sm md:text-base"
+                data-cursor-hover
+                >View Certificate <i class="fas fa-external-link-alt ml-2 text-xs md:text-sm"></i
+              ></a>
+              <span
+                class="bg-green-900/30 text-green-300 text-xs px-2 py-1 rounded-full"
+                >AWS</span
+              >
+            </div>
+          </div>
+
+          <!-- Certificate 6 -->
+          <div
+            class="certificate-card glass-card p-4 md:p-6 rounded-xl group"
+            data-aos="flip-left"
+            data-aos-delay="400"
+          >
+            <div class="overflow-hidden rounded-lg mb-4 relative">
+              <img
+                src="https://via.placeholder.com/600x400/764ba2/ffffff?text=Hackathon+Winner"
+                alt="Hackathon Winner Certificate"
+                class="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute top-2 right-2 bg-yellow-600 text-white text-xs px-2 py-1 rounded-full"
+              >
+                <i class="fas fa-trophy mr-1"></i> Winner
+              </div>
+            </div>
+            <span class="text-sm text-purple-400"
+              >Awarded: November 20, 2022</span
+            >
+            <h3 class="text-lg md:text-xl font-semibold my-2">
+              National Hackathon 2022 Champion
+            </h3>
+            <p class="text-gray-400 mb-4 text-sm md:text-base">
+              First place winner in National Web Development Hackathon among
+             200+ participants with innovative solution.
+            </p>
+            <div class="flex justify-between items-center">
+              <a
+                href="#"
+                class="text-pink-400 hover:text-pink-300 font-medium flex items-center text-sm md:text-base"
+                data-cursor-hover
+                >View Certificate <i class="fas fa-external-link-alt ml-2 text-xs md:text-sm"></i
+              ></a>
+              <span
+                class="bg-yellow-900/30 text-yellow-300 text-xs px-2 py-1 rounded-full"
+                >TechCrunch</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-8 md:mt-12">
+          <a
+            href="#"
+            class="inline-flex items-center glass-card px-4 py-2 md:px-5 md:py-3 text-white rounded-lg font-semibold group text-sm md:text-base"
+            data-cursor-hover
+          >
+            View All Certificates
+            <i
+              class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform text-xs md:text-sm"
+            ></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-20 bg-black bg-opacity-30">
+      <div class="slim-container mx-auto px-4 md:px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
+            <img
+              src="img/Main Profile/about profile.jpeg"
+              alt="About Me"
+              class="w-full max-w-md mx-auto rounded-2xl shadow-xl"
+            />
+          </div>
+          <div class="md:w-1/2 md:pl-8 lg:pl-12 mt-8 md:mt-0" data-aos="fade-left">
+            <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+              About <span class="gradient-text">Me</span>
+            </h2>
+            <p class="text-gray-300 mb-4 text-sm md:text-base">
+              Saya Muhammad Hana Haikal, lulusan D3 Teknik Informatika dari
+              Politeknik Purbaya. Saya memiliki antusiasme yang tinggi dalam
+              dunia pemrograman dan teknologi, serta berkomitmen untuk terus
+              mengembangkan diri di bidang ini.
+            </p>
+            <p class="text-gray-300 mb-4 text-sm md:text-base">
+              Selama 3 tahun studi, saya mempelajari dasar-dasar pemrograman
+              dengan PHP, JavaScript, dan HTML, serta memahami penggunaan tools
+              version control system seperti Git dan GitHub. Selain itu, saya
+              juga memiliki pemahaman tentang pengelolaan database menggunakan
+              MySQL yang mendukung kemampuan teknis saya.
+            </p>
+            <p class="text-gray-300 mb-6 text-sm md:text-base">
+              Meskipun pengalaman saya di dunia kerja belum banyak, saya yakin
+              dengan karakter yang mudah beradaptasi, cepat tanggap terhadap hal
+              baru, serta dukungan dari komunitas dan rekan-rekan, saya dapat
+              terus berkembang. Saya percaya bahwa ilmu bisa datang dari mana
+              saja, asalkan ada niat dan minat yang kuat untuk menjalaninya.
+            </p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+              <a
+                href="img/CV/Mycv.pdf"
+                class="inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold text-sm md:text-base"
+              >
+                <i class="fas fa-download mr-2"></i> Download CV
+              </a>
+              <a
+                href="https://wa.me/6285794778048?text=Halo%20saya%20lihat%20portfolio%20Anda%2C%20boleh%20minta%20info%20lebih%20lanjut%3F"
+                class="inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-3 glass-card text-white border border-purple-500 rounded-lg font-semibold hover:bg-purple-500 transition text-sm md:text-base"
+              >
+                <i class="fas fa-paper-plane mr-2"></i> Hire Me
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-20">
+      <div class="slim-container mx-auto px-4 md:px-6">
+        <h2
+          class="text-2xl md:text-4xl font-bold text-center mb-2"
+          data-aos="fade-up"
+        >
+          Get In <span class="gradient-text">Touch</span>
+        </h2>
+        <p
+          class="text-gray-400 text-center mb-8 md:mb-12 text-sm md:text-base"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Let's talk about your next project!
+        </p>
+
+        <div class="flex flex-col md:flex-row gap-8 md:gap-10">
+          <div class="md:w-1/2" data-aos="fade-right">
+            <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6">Contact Information</h3>
+            <div class="space-y-4 md:space-y-6">
+              <div class="flex items-start">
+                <div class="glass-card p-2 md:p-3 rounded-lg mr-3 md:mr-4">
+                  <i class="fas fa-map-marker-alt text-purple-400 text-lg md:text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-sm md:text-base">Location</h4>
+                  <p class="text-gray-400 text-xs md:text-sm">
+                    Jln. Kh. Mansyur Rt 01 Rw 03 Ds. Pekauman Kulon Kec. Dukuturi
+                    Kab.Tegal
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="glass-card p-2 md:p-3 rounded-lg mr-3 md:mr-4">
+                  <i class="fas fa-envelope text-purple-400 text-lg md:text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-sm md:text-base">Email</h4>
+                  <p class="text-gray-400 text-xs md:text-sm">akuhaykal9@gmail.com</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="glass-card p-2 md:p-3 rounded-lg mr-3 md:mr-4">
+                  <i class="fas fa-phone text-purple-400 text-lg md:text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-sm md:text-base">Phone</h4>
+                  <p class="text-gray-400 text-xs md:text-sm">+62 85794778048</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-8 md:mt-10">
+              <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6">Follow Me</h3>
+              <div class="flex space-x-3 md:space-x-4">
+                <a
+                  href="https://github.com/kal-Usr"
+                  class="glass-card p-3 md:p-4 text-purple-400 hover:text-white hover:bg-purple-500 rounded-lg transition"
+                  data-cursor-hover
+                  ><i class="fab fa-github text-lg md:text-xl"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/in/muhammad-hana-haikal-68a932254/"
+                  class="glass-card p-3 md:p-4 text-purple-400 hover:text-white hover:bg-blue-500 rounded-lg transition"
+                  data-cursor-hover
+                  ><i class="fab fa-linkedin text-lg md:text-xl"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/kalrvns/"
+                  class="glass-card p-3 md:p-4 text-purple-400 hover:text-white hover:bg-pink-500 rounded-lg transition"
+                  data-cursor-hover
+                  ><i class="fab fa-instagram text-lg md:text-xl"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="md:w-1/2" data-aos="fade-left">
+            <div class="glass-card p-4 md:p-6 lg:p-8 rounded-xl">
+              <form id="contact-form">
+                <div class="mb-4 md:mb-5">
+                  <label for="name" class="block mb-2 text-gray-300 text-sm md:text-base">Your Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full px-3 py-2 md:px-4 md:py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm md:text-base"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+                <div class="mb-4 md:mb-5">
+                  <label for="email" class="block mb-2 text-gray-300 text-sm md:text-base">Your Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full px-3 py-2 md:px-4 md:py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm md:text-base"
+                    placeholder="john@example.com"
+                    required
+                  />
+                </div>
+                <div class="mb-4 md:mb-5">
+                  <label for="subject" class="block mb-2 text-gray-300 text-sm md:text-base">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    class="w-full px-3 py-2 md:px-4 md:py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm md:text-base"
+                    placeholder="Project Collaboration"
+                    required
+                  />
+                </div>
+                <div class="mb-4 md:mb-5">
+                  <label for="message" class="block mb-2 text-gray-300 text-sm md:text-base">Your Message</label>
+                  <textarea
+                    id="message"
+                    rows="4"
+                    class="w-full px-3 py-2 md:px-4 md:py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm md:text-base"
+                    placeholder="Hello, I would like to..."
+                    required
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full py-2 md:py-3 cta-button text-white rounded-lg font-semibold shadow-lg hover:shadow-purple-500/30 transition text-sm md:text-base"
+                  data-cursor-hover
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div
+      id="imageModal"
+      class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden"
+    >
+      <div class="max-w-4xl w-full mx-2 md:mx-4">
+        <div class="relative">
+          <button
+            id="closeModal"
+            class="absolute -top-8 md:-top-12 right-0 text-white text-2xl md:text-3xl z-10"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+          <img id="modalImage" src="" alt="" class="w-full rounded-lg" />
+          <div class="flex justify-between mt-3 md:mt-4 text-white">
+            <button id="prevImage" class="px-3 py-1 md:px-4 md:py-2 glass-card rounded-lg text-sm md:text-base">
+              <i class="fas fa-chevron-left mr-1 md:mr-2"></i> Previous
+            </button>
+            <button id="nextImage" class="px-3 py-1 md:px-4 md:py-2 glass-card rounded-lg text-sm md:text-base">
+              Next <i class="fas fa-chevron-right ml-1 md:ml-2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-8 md:py-10 border-t border-gray-800">
+      <div class="slim-container mx-auto px-4 md:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0 text-center md:text-left">
+            <a href="#" class="text-xl md:text-2xl font-bold gradient-text"
+              >Muhammad Hana Haikal<span class="text-white"></span></a
+            >
+            <p class="mt-1 md:mt-2 text-gray-400 text-xs md:text-sm">
+              © 2025 All rights reserved.
+            </p>
+          </div>
+          <div class="flex space-x-4 md:space-x-6">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-purple-400 transition"
+              data-cursor-hover
+              ><i class="fab fa-github text-lg md:text-xl"></i
+            ></a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-blue-400 transition"
+              data-cursor-hover
+              ><i class="fab fa-linkedin text-lg md:text-xl"></i
+            ></a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-pink-400 transition"
+              data-cursor-hover
+              ><i class="fab fa-instagram text-lg md:text-xl"></i
+            ></a>
+          </div>
+        </div>
+        <div class="text-center mt-4 md:mt-8">
+          <p class="text-gray-400 text-xs md:text-sm">
+            Crafted with <i class="fas fa-heart text-pink-500 mx-1"></i> and too
+            much <i class="fas fa-coffee text-yellow-500 mx-1"></i>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- CDN Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- CDN for Vanilla Tilt.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+    <script>
+      // ===== INITIALIZE AOS (Animate On Scroll) =====
+      AOS.init({
+        duration: 1200,
+        once: true,
+        offset: 100,
+      })
+
+      // ===== PARTICLES.JS CONFIG (Optimized for mobile) =====
+      particlesJS("particles-js", {
+        particles: {
+          number: { 
+            value: window.innerWidth < 768 ? 40 : 80, 
+            density: { enable: true, value_area: 800 } 
+          },
+          color: { value: "#f093fb" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5, random: true },
+          size: { value: 3, random: true },
+          line_linked: {
+            enable: window.innerWidth >= 768,
+            distance: 150,
+            color: "#667eea",
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: window.innerWidth < 768 ? 1 : 2,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { 
+              enable: window.innerWidth >= 768, 
+              mode: "grab" 
+            },
+            onclick: { enable: true, mode: "push" },
+            resize: true,
+          },
+          modes: {
+            grab: { distance: 140, line_linked: { opacity: 1 } },
+            push: { particles_nb: 4 },
+          },
+        },
+        retina_detect: true,
+      })
+
+      // ===== CUSTOM CURSOR (Hidden on mobile) =====
+      const cursorDot = document.querySelector(".cursor-dot")
+      const cursorOutline = document.querySelector(".cursor-outline")
+      const hoverElements = document.querySelectorAll("[data-cursor-hover]")
+
+      // Only enable custom cursor on non-touch devices
+      if (window.innerWidth >= 768) {
+        document.addEventListener("mousemove", (e) => {
+          const posX = e.clientX
+          const posY = e.clientY
+
+          cursorDot.style.left = `${posX}px`
+          cursorDot.style.top = `${posY}px`
+
+          // Outline with a slight delay for smooth effect
+          setTimeout(() => {
+            cursorOutline.style.left = `${posX}px`
+            cursorOutline.style.top = `${posY}px`
+          }, 80)
+        })
+
+        // Add hover effect class to cursor
+        hoverElements.forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            cursorOutline.classList.add("cursor-hover")
+          })
+          el.addEventListener("mouseleave", () => {
+            cursorOutline.classList.remove("cursor-hover")
+          })
+        })
+      }
+
+      // ===== MOBILE MENU TOGGLE =====
+      document
+        .getElementById("menu-btn")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu")
+          mobileMenu.classList.toggle("hidden")
+          
+          // Close menu when clicking a link
+          document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenu.classList.add('hidden')
+            })
+          })
+        })
+
+      // ===== VANILLA TILT INIT (Only on non-mobile) =====
+      if (window.innerWidth >= 768) {
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+          max: 5,
+          speed: 400,
+          glare: true,
+          "max-glare": 0.1,
+        })
+      }
+
+      // ===== SKILL BAR ANIMATION =====
+      function animateSkillBars() {
+        const skillBars = document.querySelectorAll(".skill-bar")
+        skillBars.forEach((bar) => {
+          bar.classList.add("animate")
+        })
+      }
+
+      // Animate skill bars when skills section is in view
+      const skillsSection = document.getElementById("skills")
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateSkillBars()
+            }
+          })
+        },
+        { threshold: 0.5 }
+      )
+
+      observer.observe(skillsSection)
+
+      // ===== FORM SUBMISSION =====
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault()
+          // Here you would normally send the form data to a server
+          alert("Thank you for your message! I will get back to you soon.")
+          this.reset()
+        })
+
+      // ===== IMAGE GALLERY MODAL =====
+      const galleryImages = document.querySelectorAll(".view-image")
+      const imageModal = document.getElementById("imageModal")
+      const modalImage = document.getElementById("modalImage")
+      const closeModal = document.getElementById("closeModal")
+      const prevButton = document.getElementById("prevImage")
+      const nextButton = document.getElementById("nextImage")
+
+      let currentImageIndex = 0
+      const imageSources = Array.from(galleryImages).map(
+        (img) => img.dataset.image
+      )
+
+      // Open modal with clicked image
+      galleryImages.forEach((img, index) => {
+        img.addEventListener("click", () => {
+          currentImageIndex = index
+          modalImage.src = imageSources[currentImageIndex]
+          imageModal.classList.remove("hidden")
+          document.body.style.overflow = "hidden" // Prevent scrolling
+        })
+      })
+
+      // Close modal
+      closeModal.addEventListener("click", () => {
+        imageModal.classList.add("hidden")
+        document.body.style.overflow = "auto"
+      })
+
+      // Navigate to previous image
+      prevButton.addEventListener("click", () => {
+        currentImageIndex =
+          (currentImageIndex - 1 + imageSources.length) % imageSources.length
+        modalImage.src = imageSources[currentImageIndex]
+      })
+
+      // Navigate to next image
+      nextButton.addEventListener("click", () => {
+        currentImageIndex = (currentImageIndex + 1) % imageSources.length
+        modalImage.src = imageSources[currentImageIndex]
+      })
+
+      // Close modal when clicking outside the image
+      imageModal.addEventListener("click", (e) => {
+        if (e.target === imageModal) {
+          imageModal.classList.add("hidden")
+          document.body.style.overflow = "auto"
+        }
+      })
+
+      // Keyboard navigation (only on non-touch devices)
+      if (window.innerWidth >= 768) {
+        document.addEventListener("keydown", (e) => {
+          if (!imageModal.classList.contains("hidden")) {
+            if (e.key === "Escape") {
+              imageModal.classList.add("hidden")
+              document.body.style.overflow = "auto"
+            } else if (e.key === "ArrowLeft") {
+              currentImageIndex =
+                (currentImageIndex - 1 + imageSources.length) %
+                imageSources.length
+              modalImage.src = imageSources[currentImageIndex]
+            } else if (e.key === "ArrowRight") {
+              currentImageIndex = (currentImageIndex + 1) % imageSources.length
+              modalImage.src = imageSources[currentImageIndex]
+            }
+          }
+        })
+      }
+
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        // Reinitialize particles on resize for better mobile performance
+        if (typeof particlesJS !== 'undefined') {
+          particlesJS("particles-js", {
+            particles: {
+              number: { 
+                value: window.innerWidth < 768 ? 40 : 80, 
+                density: { enable: true, value_area: 800 } 
+              },
+              color: { value: "#f093fb" },
+              shape: { type: "circle" },
+              opacity: { value: 0.5, random: true },
+              size: { value: 3, random: true },
+              line_linked: {
+                enable: window.innerWidth >= 768,
+                distance: 150,
+                color: "#667eea",
+                opacity: 0.4,
+                width: 1,
+              },
+              move: {
+                enable: true,
+                speed: window.innerWidth < 768 ? 1 : 2,
+                direction: "none",
+                random: true,
+                straight: false,
+                out_mode: "out",
+                bounce: false,
+              },
+            },
+            interactivity: {
+              detect_on: "canvas",
+              events: {
+                onhover: { 
+                  enable: window.innerWidth >= 768, 
+                  mode: "grab" 
+                },
+                onclick: { enable: true, mode: "push" },
+                resize: true,
+              },
+              modes: {
+                grab: { distance: 140, line_linked: { opacity: 1 } },
+                push: { particles_nb: 4 },
+              },
+            },
+            retina_detect: true,
+          })
+        }
+      })
+
+      console.log("🔥 Portfolio is lit! Welcome to the next level.")
+    </script>
+  </body>
+</html>
